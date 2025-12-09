@@ -6,7 +6,6 @@ SPREADSHEET_ID = os.environ["SPREADSHEET_ID"]
 SERVICE_ACCOUNT_JSON_PATH = "service_account.json"
 
 def main():
-    # サービスアカウントで認証
     creds = Credentials.from_service_account_file(
         SERVICE_ACCOUNT_JSON_PATH,
         scopes=["https://www.googleapis.com/auth/spreadsheets"]
@@ -18,7 +17,6 @@ def main():
     row = ["TEST", 111.1, 222.2]
     body = {"values": [row]}
 
-    # data!A1 に対して append
     result = sheet.values().append(
         spreadsheetId=SPREADSHEET_ID,
         range="data!A1",
@@ -26,7 +24,6 @@ def main():
         body=body
     ).execute()
 
-    # どこに書き込んだかログ出力
     print("APPEND_RESULT", result)
 
 if __name__ == "__main__":
