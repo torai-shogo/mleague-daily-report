@@ -48,12 +48,15 @@ def append_to_sheet(date_str, team_points):
     row = [date_str] + [team_points.get(name, 0.0) for name in TEAM_NAMES]
     body = {"values": [row]}
 
-    sheet.values().append(
+    result = sheet.values().append(
         spreadsheetId=SPREADSHEET_ID,
         range="data!A1",
         valueInputOption="RAW",
         body=body
     ).execute()
+
+    # ★どのシートのどの範囲に書かれたかログ出力
+    print("APPEND_RESULT", result)
 
 
 # --- メイン処理 ---
