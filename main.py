@@ -58,7 +58,8 @@ def append_to_sheet(date_str, team_points):
 
 # --- メイン処理 ---
 def main():
-    # JST で前日の日付を計算
-    today_jst = dt.datetime.now(dt.timezone(dt.timedelta(hours=9)))
-    target_date = (today_jst - dt.timedelta(days=1)).date()
-    date_str = target_date.strfti
+    # ★テスト用：固定の値を書き込む
+    date_str = "TEST"
+    team_points = {"Team_A": 111.1, "Team_B": 222.2}
+
+    append_to_sheet(date_str, team_points)
